@@ -12,7 +12,7 @@ class Posts extends Component {
                     {this.props.posts.map(post => {
                         return (
                             <div className="col mb-4">
-                                <Post post={post}/>
+                                <Post key={post.id} post={post}/>
                             </div>
                         )
                     })}

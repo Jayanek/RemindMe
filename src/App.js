@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route} from "react-router-dom";
+import About from './components/pages/about';
+import Navbar from './components/partials/navbar';
+import AddPost from './components/posts/addPost';
 import Posts from './components/posts/posts';
 
 class App extends Component {
@@ -10,11 +14,38 @@ class App extends Component {
       {id:4,title:'Article Title 04',likes:42,body:'You can add webfonts, meta tags, or analytics to this file The build step will place the bundled scripts'},
     ]
    }
+
+   addPost = (title,likes,body) => {
+     const newPost = {id:5,title,likes,body}
+     const posts = [newPost,...this.state.posts]
+     this.setState({posts})
+
+   }
+
   render() { 
     return ( 
-      <div className="container">
-        <Posts posts={this.state.posts}/>
-      </div>
+
+      <React.Fragment>
+        <Router>
+        <Navbar/>
+
+        <Route path='/' exact>
+          <div className="container">
+            <Posts posts={this.state.posts}/>
+          </div>
+        </Route>
+
+        <Route path='/about' exact>
+          <About/>
+        </Route>
+
+        <Route path='/create' exact>
+          <AddPost addPost={this.addPost}/>
+        </Route>
+        
+        </Router>
+      </React.Fragment>
+      
      );
   }
 }

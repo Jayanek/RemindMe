@@ -12,7 +12,10 @@ class Post extends Component {
                     
                 <div className="card-body">
                     <h5 className="card-title">{title}</h5>
-                    <p className="card-text">{body.slice(0,40)}....</p>
+                    <img src="https://images.freeimages.com/images/large-previews/a61/vikingland-1316664.jpg" className="card-img-top" alt="featured"/>
+                    <span class="badge badge-pill badge-info">{likes} likes</span>
+                    <p className="card-text">{body.slice(0,80)}</p>
+                    <a href="#" class="badge badge-warning">Read more</a>
                 </div>
             
             </div>
